@@ -10,7 +10,7 @@
 
 #include "buzzer.h"
 
-buzzernote pokemon[451]={
+buzzernote static const pokemon[451]={
 		{A1,   2, 1, 0, {0,0}},
 		{Gd1,   2, 1, 0, {0,0}},
 		{G1,   2, 1, 0, {0,0}},

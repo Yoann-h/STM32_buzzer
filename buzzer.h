@@ -71,5 +71,6 @@ BUZZER_Result buzzer_eStop(ts_buzzer* buz);
 BUZZER_Result buzzer_eSetfrequency(ts_buzzer* buz,float freq);
 BUZZER_Result buzzer_ePlaySong(ts_buzzer* buz, buzzernote* partition, uint8_t baseoctave, uint32_t length, uint16_t bpm);
 void buzzer_vDemoTask(ts_buzzer* buz);
+void buzzer_vJukeBoxTask();
 
 #endif /* YHLIB_BUZZER_BUZZER_H_ */

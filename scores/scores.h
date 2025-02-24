@@ -33,7 +33,7 @@ typedef enum {
 	theme_nb
 } buzzer_songs;
 
-buzzernote* scorelist[theme_nb]=
+static const buzzernote* scorelist[theme_nb]=
 {
 #ifdef BUZZER_MARIO
 	mario,

@@ -15,6 +15,8 @@ void buzzerMNG_stop();
 uint32_t buzzer_PCLKxTIM(TIM_HandleTypeDef* ftim);
 BUZZER_Result buzzer_eVerifyTimersConfig(TIM_HandleTypeDef* fhtimeBaseTim, TIM_HandleTypeDef* fhfrequencyTim);
 
+ts_buzzer buzzer;
+uint8_t song = theme_nb;
 
 float fNotesFrequencies[noteNB]=
 {
@@ -118,7 +120,7 @@ BUZZER_Result buzzer_ePlaySong(ts_buzzer* buz, buzzernote* partition, uint8_t ba
 		int i=0;
 		int cpt_tempo=0;
 		uint8_t u8imp=0;
-		while(i<length)
+		while(i<length && song!=theme_nb)
 		{
 			if(u8imp==0)
 			{
@@ -191,6 +193,26 @@ int buzzer_ipower(uint8_t x, uint8_t n)
 			return result;
 		}
 	}
+}
+
+
+void buzzer_vJukeBoxTask()
+{
+	if(song == zelda_theme)
+	  {
+		buzzer_ePlaySong(&buzzer, zelda,3,152,500);
+		  song = theme_nb;
+	  }
+	  else if(song == mario_theme)
+	  {
+		  buzzer_ePlaySong(&buzzer,mario,3,127, 360);
+		  song = theme_nb;
+	  }
+	  else if(song == pokemon_battletheme)
+	  {
+		  buzzer_ePlaySong(&buzzer,pokemon,2,451, 180*4);
+		  song = theme_nb;
+	  }
 }
 
 void buzzer_vDemoTask(ts_buzzer* buz)

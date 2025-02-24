@@ -10,7 +10,7 @@
 
 #include "buzzer.h"
 
-buzzernote zelda[152]={
+buzzernote static const zelda[152]={
 		{Ad1,   0, 8, 0, {0,0}}, //! 0
 		{none, 0, 2, 1, {0,0}},
 		{none, 0, 2, 1, {0,0}},

@@ -10,7 +10,7 @@
 
 #include "buzzer.h"
 
-buzzernote mario[127]={
+buzzernote static const mario[127]={
 		{none, 0+1, 1, 0, {0,0}},//0
 		{E1,   0+1, 1, 0, {0,0}},     //!
 		{E1,   0+1, 1, 0, {0,0}},
