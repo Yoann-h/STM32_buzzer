@@ -110,6 +110,7 @@ BUZZER_Result buzzer_ePlaySong(ts_buzzer* buz, buzzernote* partition, uint8_t ba
 	BUZZER_Result eResult = BUZZER_OK;
 	buzzer_vsetTimeBaseFreq(buz, bpm);
 	uint32_t u32Period = 1000*60/bpm;
+	uint8_t repeat=0;
 	if (HAL_TIM_Base_Start_IT(buz->timeBaseTimer) != HAL_OK)
 	{
 	  eResult = BUZZER_INTERNAL_ERROR;
@@ -147,8 +148,17 @@ BUZZER_Result buzzer_ePlaySong(ts_buzzer* buz, buzzernote* partition, uint8_t ba
 					u8imp=0;
 					if(partition[i].repeat[1]>0)
 					{
-						partition[i].repeat[1]--;
+						if(partition[i].repeat[1]==repeat)
+						{
+							repeat=0;
+							i++;
+						}
+						else
+						{
+						//partition[i].repeat[1]--;
 						i=partition[i].repeat[0];
+						repeat++;
+						}
 					}
 					else
 					{
