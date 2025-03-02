@@ -259,13 +259,13 @@ BUZZER_Result buzzer_eVerifyTimersConfig(TIM_HandleTypeDef* fhtimeBaseTim, TIM_H
 {
 
 	BUZZER_Result eResult = BUZZER_OK;
-	if((fhtimeBaseTim->Instance->PSC +1)*1000000 != servo_PCLKxTIM(fhtimeBaseTim)*100)//force timer resolution to 100µs (10kHz)
+	if((fhtimeBaseTim->Instance->PSC +1)*1000000 != buzzer_PCLKxTIM(fhtimeBaseTim)*100)//force timer resolution to 100µs (10kHz)
 	{
 		eResult = BUZZER_PARAMETER_ERROR;
 	}
 	if(eResult == BUZZER_OK)
 	{
-		if((fhfrequencyTim->Instance->PSC +1)*1000000 != servo_PCLKxTIM(fhfrequencyTim))//force pwm resolution to 1µs
+		if((fhfrequencyTim->Instance->PSC +1)*1000000 != buzzer_PCLKxTIM(fhfrequencyTim))//force pwm resolution to 1µs
 		{
 			eResult = BUZZER_PARAMETER_ERROR;
 		}
